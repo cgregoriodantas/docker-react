@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t gregorio/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true gregorio/docker-react npm run test
